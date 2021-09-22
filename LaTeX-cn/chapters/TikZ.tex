@@ -935,8 +935,9 @@ lime,olive,orange,pink,purple,teal,violet}
 \end{tikzshow}
 
 图像填充允许你使用外部图像，或者一般的 \tikzz\ 命令。注意配合 \tikzkw{path picture bounding box} 使用。
-\begin{tikzshow}
 
+\begin{tikzshow}
+\draw[pattern=dots, pattern color=red] (0,0) rectangle (1,1);
 \end{tikzshow}
 
 \subsection{渐变填充*}
@@ -958,6 +959,7 @@ p169
 还有一个特殊的双线选项 \tikzkw{double equal sign distance}，可以将双线间距设置成与当前字体的等号（$=$）间距一致。
 
 \section{样式与高级控制}
+
 \subsection{样式（style）}
 如果某种属性需要用来反复作图，可以把它自定义为样式：
 
