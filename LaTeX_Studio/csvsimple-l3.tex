@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage{ifthen,array,booktabs}
+\usepackage{ctex}
+\usepackage{tikz,xcolor,colortbl}
+\usepackage[left=1in,top=1.1in,right=1in,bottom=1.1in]{geometry}
+\usepackage{hyperref}
+\usepackage{fontspec}
+
+\definecolor{Cyan}{RGB}{204,231,224}
+\definecolor{Pink}{RGB}{252,228,208}
+\definecolor{dpink}{RGB}{238,202,183}
+\definecolor{Violet}{RGB}{232,232,237}
+\definecolor{Orange}{RGB}{255,228,180}
+\definecolor{Blue}{RGB}{173,213,237}
+
+
+\IfFileExists{csvsimple-doc.cfg}{\input{csvsimple-doc.cfg}}{}% ignore this line
+\providecommand\csvpkgprefix{}                               % ignore this line
+
+\usepackage{\csvpkgprefix csvsimple-l3}%  \usepackage{csvsimple-l3}
+
+\begin{document}
+	
+	\title{\bfseries\sffamily CSV.example for Automatic Table Generation}
+	
+	\author{\href{http://www.latexstudio.net}{\sffamily csvsimple-l3 宏包自动生成CSV数表表格的几个案例}}
+	
+	\date{September 16, 2021}
+	
+	\maketitle
+	
+	%----------------------------------------------------------
+	\section{CSV 数表文本自动生成（用于以下信息读取测试）}
+	我们先建立一个csv格式的数据总表，并将其在\LaTeX 文档中被读取出来。
+	
+	\smallskip
+	{\small
+		\csvautotabular{csvsimple-example.csv}
+	}
+	\smallskip
+	
+	以下自动生成的表内容，均源于宏包csvsimple-l3对上面总表信息内容的读取。
+	
+	%----------------------------------------------------------
+	\section{读取数据生成的第一个表格}
+	\csvreader[
+	tabular=|l|l|l|l|,
+	table head=\hline\multicolumn{4}{|c|}{\cellcolor{dpink}\bfseries 高一(2)班学生语数外成绩表}\\\hline
+	\cellcolor{Blue}\bfseries 姓名 &\cellcolor{Blue} \bfseries 语文&\cellcolor{Blue} \bfseries 数学&\cellcolor{Blue} \bfseries 英语\\\hline\hline,
+	late after line=\\\hline]
+	{csvsimple-example.csv}{Name=\Name,Chinese=\Chinese,Math=\Math,
+		English=\English}{
+		\cellcolor{Violet}\Name& \cellcolor{Orange}\Chinese & \cellcolor{Pink}\Math & \cellcolor{Cyan}\English
+	}\hspace{2cm}
+	\csvreader[tabular=|l|l|l|l|,
+	table head= \hline\multicolumn{4}{|c|}{\cellcolor{red!70!yellow!80!black}\color{white}\bfseries 高一(2)班学生理化生成绩表}\\\hline
+	\cellcolor{violet!70!cyan!80!white}\color{white}\bfseries 姓名 & \cellcolor{violet!70!cyan!80!white}\color{white}\bfseries 物理& \cellcolor{violet!70!cyan!80!white}\color{white}\bfseries 化学& \cellcolor{violet!70!cyan!80!white}\color{white}\bfseries 生物\\\hline\hline,
+	late after line=\\\hline]
+	{csvsimple-example.csv}{Name=\Name,Physics=\Physics,Chemical=\Chmical,
+		Biology=\Biology}{
+		\cellcolor{Blue!70!green!80!white}\Name& \cellcolor{pink!70!red!80!white}\Physics & \Chmical & \Biology
+	}
+	
+	
+	%----------------------------------------------------------
+	\section{读取数据，自动生成格式一样的文档}
+	\csvnames{my names}{Name=\Name,Chinese=\Chinese,Math=\Math,
+		English=\English,Total=\Total,Overall=\Overall}
+	
+	\csvreader[my names, late after line=, late after last line=]%
+	{csvsimple-example.csv}{Color=\Color}{
+		\begin{minipage}{0.8\linewidth}
+			\begin{tikzpicture}[overlay,remember picture]
+				\draw[line width=1pt,draw=orange,fill=\Color,dashed,rounded corners=6pt](-1,-5) rectangle (15,0);
+			\end{tikzpicture}
+			\begin{center}
+				{\LARGE \bfseries 奖\quad~状}
+			\end{center}
+			
+			\noindent
+			\underline{\Name}同学：
+			
+			在2020--2021学年度第一学期中期末考试中，语文: \underline{~\Chinese~}、数学: \underline{~\Math~}、英语\underline{~\English~}、总分:\underline{~\Total~}，总体表现 \underline{\Overall}，特发此奖以资鼓励！
+			
+			\vspace{15pt}
+			\hfill XXXX 中学 \hspace{2cm}
+			
+			\hfill 2021年9月 16日\hspace{2cm}
+		\end{minipage}
+		
+		\vspace{1cm}
+	}
+	
+\end{document}
+

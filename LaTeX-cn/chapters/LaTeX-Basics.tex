@@ -99,13 +99,13 @@ a\textasciitilde b
 其中，在语句\latexline{begin\{document\}}之前的内容称为\co{导言区}。导言区可以留空，以可以进行一些文档的准备操作。你可以粗浅地理解为：\RED{导言区即模板定义}。\dpar
 
 文档类的参数doc-class和可选选项{\textit{options}}有\tref{tab:documentclass}取值：
-\begin{table}[!htb]
+\begin{table}[!htb] %[!htb]
     \centering
 	\caption{文档类和选项}
 	\label{tab:documentclass}
-	\begin{tabular}{p{5em} @{\ -\ } p{24em}}
+	\begin{tabular}{p{5em} @{\ -\ } p{24em}}%@{\ -\ }
 		\hline
-		\multicolumn{2}{l}{\bfseries doc-class文档类\footnotemark} \\
+		\multicolumn{2}{l}{\bfseries doc-class文档类\footnotemark} \\%\footnotemark
 		\hline
 		article   & 科学期刊，演示文稿，短报告，邀请函。\\
 		proc      & 基于article的会议论文集。\\

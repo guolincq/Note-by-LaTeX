@@ -1,6 +1,7 @@
 %!TEX program = xelatex
 
-\input{Head} % 文档拆分：\input{};\include{};\includeonly{};\endinput
+\input{Head} % 内有\documentclass{ctexrep}
+% 文档拆分：\input{};\include{};\includeonly{};\endinput
 
 \title{简单粗暴\LaTeX\ }
 \author{K.L Wu\\
@@ -22,13 +23,14 @@
 \noindent{\Huge\xinwei 第一稿序}\dpar\dpar
 
 其实在之前我是有一稿手册的，开始撰写的日期大概在2015年4月．但是自己觉得写得太烂，因此索性推倒重写了这一版．这一版的主要特征是：
-\begin{feae}
+\begin{feae}% feae为自定义环境：
   \item 我希望能够吸引初学者快速上手，解决手头的问题．因此去掉了枯燥的讲解和无穷无尽的宏包用法介绍，直接使用实例；
   \item 力求突出实用性．当然，也会提点一些可以深入学习的内容，读者可以自行查阅，或者阅读本手册中的扩展阅读章节（即带星号*的章节）．
   \item 本手册使用的编辑器为\TeX\ Studio，而非之前的商业软件WinEdt. 这使得学习\LaTeX\ 的门槛更低．当然了，你有权使用任何编辑器．
 \end{feae}
 
-手册主体分为六大部分\cite{LHY2013latex,lamport1994latex,frank2004latex,partl2016,Casteleyn2016tikz,tikzmanual}：% 需要用xe->bib->xe->xe 编译，才会正确。
+手册主体分为六大部分\cite{LHY2013latex,lamport1994latex,frank2004latex,partl2016,Casteleyn2016tikz,tikzmanual}：
+% 需要用xe->bib->xe->xe 编译，才会正确。
 
 \begin{fead} % fead为自定义环境：
 \item[写给读者*] 介绍\LaTeX\ 背景、优缺点、适用情形．
@@ -45,7 +47,7 @@
 
 \vfill
 
-\begin{flushright}
+\begin{flushright} %右对齐
 Mail: wklchris@hotmail.com\dpar
 
 Chris Wu
@@ -76,6 +78,7 @@ v1.6.3 更新 --- 2018年3月22日．\dpar
   \end{feai}
 \item 字体更换：思源宋体．
 \item 编辑了 Head.tex 文件，使之更易阅读．
+\begin{feai}
 \item [添加]宏包\pkg{animate}：在 PDF 中展示动态图．（v1.6.1）
 \item [添加]宏包\pkg{tocbibind}：
   \begin{feai}
@@ -90,6 +93,7 @@ v1.6.3 更新 --- 2018年3月22日．\dpar
   \item 参数 CJKspace．该功能在新版宏包中已修复．
   \item 命令 \latexline{setCJKmainfont}，可指定字体文件名．
   \end{feai}
+\end{feai}
 \item 数学内容：
   \begin{feai}
   \item [添加]宏包\pkg{extarrows}：长等号命令．
@@ -110,7 +114,7 @@ v1.6.3 更新 --- 2018年3月22日．\dpar
 \include{chapters/LaTeX-Basics}
 \include{chapters/Play-with-Math}
 \include{chapters/LaTeX-Advanced-Skills}
-% \include{chapters/TikZ}
+\include{chapters/TikZ}
 
 % Appendices
 
