@@ -4,7 +4,12 @@
 \pgfplotsset{compat=1.13} % TikZ coordinates <-> axes coordinates
 \usepackage{siunitx,times}
 
-\makeatletter \newcommand{\pgfplotsdrawaxis}{\pgfplots@draw@axis} \makeatother
+\makeatletter 
+
+\newcommand{\pgfplotsdrawaxis}{\pgfplots@draw@axis} 
+
+\makeatother
+
 \pgfplotsset{axis line on top/.style={after end axis/.append code={\pgfplotsdrawaxis}}
 }
 
